@@ -18,7 +18,7 @@ that's it. no config, no api keys, no account.
 
 ## layout
 ```
-downloader/
+tiktok/
 ├── tiktok-dl.mjs      <- the tiktok downloader
 └── tt-downloads/          <- output (created on first run)
 ```
