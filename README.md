@@ -1,5 +1,5 @@
-# tiktok-dl.mjs
-downloads tiktok videos. probably.
+# downloader
+downloads tiktok videos and probably other videos (soon)
 
 ## usage
 ```bash
