@@ -1,4 +1,5 @@
 // Usage: node tiktok-dl.mjs <url>
+// npm install puppeteer
 import fs from 'fs';
 
 const t0 = Date.now();
