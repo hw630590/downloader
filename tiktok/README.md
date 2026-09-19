@@ -13,6 +13,7 @@ python:
 example:
 
 `node tiktok-dl.mjs https://www.tiktok.com/@user/video/1234567890123456789`
+
 `python tiktok_dl.py https://www.tiktok.com/@user/video/1234567890123456789`
 
 output lands in tt-downloads/<videoid>.mp4. folder is created automatically.
@@ -24,6 +25,7 @@ javascript:
 
 python:
 `pip install requests playwright`
+
 `playwright install chromium`
 
 that's it. no config, no api keys, no account.
