@@ -1,20 +1,30 @@
 # downloader
-downloads tiktok videos and probably other videos (soon)
+downloads videos from tiktok and other sites (more coming soon)
 
 ## usage
-```bash
-node tiktok-dl.mjs <tiktok-url>
-```
+
+node tiktok/tiktok-dl.mjs <tiktok-url>
+
 example:
-```bash
-node tiktok-dl.mjs https://www.tiktok.com/@user/video/1234567890123456789
-```
+
+node tiktok/tiktok-dl.mjs https://www.tiktok.com/@user/video/1234567890123456789
+
 output lands in tt-downloads/<videoid>.mp4. folder is created automatically.
+
 ## install
-```bash
+
 npm install puppeteer
-```
+
 that's it. no config, no api keys, no account.
+
+## layout
+
+downloader/
+├── tiktok/
+│   └── tiktok-dl.mjs      <- the tiktok downloader
+└── tt-downloads/          <- output (created on first run)
+
+each platform gets its own folder under the project root. tiktok is the first one. more will slot in alongside it (e.g. youtube/, instagram/, twitter/) as they're added.
 
 ## how it works
 
@@ -28,24 +38,24 @@ if tikcdn 404s, rate-limits, or hands back junk, we launch headless chromium, na
 
 ## timing / limits
 - overall start time is captured at the top (t0) and printed as took: X ms on success.
-- tikcdn: no explicit timeout - relies on fetch defaults.
+- tikcdn: no explicit timeout, relies on fetch defaults.
 - puppeteer path: 30 second hard timeout. if no matching stream is seen by then, it prints no stream and exits 1.
 - navigation itself has a 60s timeout, but errors from page.goto are swallowed (catch(() => {})) because we expect to exit before navigation finishes anyway.
 
 ## what it validates
 the mp4 is only accepted if:
 - buf.length >= 10000
-- bytes 4–8 equal ftyp (the ISO base media file format magic)
+- bytes 4-8 equal ftyp (the ISO base media file format magic)
 
-if tikcdn fails this check, it falls through to puppeteer. if puppeteer's chunk fails the ftyp check it still saves it but prints ⚠ not ftyp, puppeteer path is more trusting because we matched the URL pattern directly.
+if tikcdn fails this check, it falls through to puppeteer. if puppeteer's chunk fails the ftyp check it still saves it but prints not ftyp, puppeteer path is more trusting because we matched the URL pattern directly.
 
 ## exit codes
-- 0 — saved successfully
-- 1 — no url arg, no video id in url, no stream captured in 30s, or an unexpected error
+- 0 - saved successfully
+- 1 - no url arg, no video id in url, no stream captured in 30s, or an unexpected error
 
 ## files
-- tt-downloads/ — created on run if missing
-- tt-downloads/<id>.mp4 — the downloaded video
+- tt-downloads/ - created on run if missing
+- tt-downloads/<id>.mp4 - the downloaded video
 
 ## caveats
 - tiktok changes their video URL structure and CDN hosts regularly. the regex /v\d+-webapp.*tiktok\.com/ may need updating when it stops matching.
