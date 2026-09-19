@@ -1,5 +1,6 @@
-# downloader
 downloads videos from tiktok and other sites (more coming soon)
+
+# tiktok downloader
 
 ## usage
 
