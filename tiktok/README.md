@@ -2,11 +2,11 @@
 
 ## usage
 
-`node tiktok/tiktok-dl.mjs <tiktok-url>`
+`node tiktok-dl.mjs <tiktok-url>`
 
 example:
 
-`node tiktok/tiktok-dl.mjs https://www.tiktok.com/@user/video/1234567890123456789`
+`node tiktok-dl.mjs https://www.tiktok.com/@user/video/1234567890123456789`
 
 output lands in tt-downloads/<videoid>.mp4. folder is created automatically.
 
@@ -19,8 +19,7 @@ that's it. no config, no api keys, no account.
 ## layout
 ```
 downloader/
-├── tiktok/
-│   └── tiktok-dl.mjs      <- the tiktok downloader
+├── tiktok-dl.mjs      <- the tiktok downloader
 └── tt-downloads/          <- output (created on first run)
 ```
 
